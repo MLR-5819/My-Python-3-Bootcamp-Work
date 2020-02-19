@@ -1,0 +1,8 @@
+def myfunc(word):
+    result=""
+    for index, char in enumerate(word):
+        if index % 2 == 0:
+            result += char.upper()
+        else:
+            result += char.lower()
+    return result

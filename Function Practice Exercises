@@ -1,0 +1,31 @@
+#warm up 1: Lesser of Two Evens
+
+def lesser_of_two_evens(a,b):
+    if a % 2 == 0 and b % 2 == 0:
+        return min(a,b)
+    else:
+        return max(a,b) 
+
+#test1
+print(lesser_of_two_evens(2,4))
+
+#test2
+print(lesser_of_two_evens(2,5))
+
+#_______________________________________
+#warm up 2: Animal Crackers
+
+def animal_crackers(text):
+    words = text.split()
+    fword = words[0][0]
+    sword = words[1][0]
+    if fword == sword:
+        return True
+    else:
+        return False
+
+#test1
+print(animal_crackers('Levelheaded Llama'))
+
+#test2
+print(animal_crackers('Crazy Kangaroo'))

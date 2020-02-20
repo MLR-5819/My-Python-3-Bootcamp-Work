@@ -1,4 +1,4 @@
-#Level1:
+#Level1_1:
 #OLD MACDONALD: Write a function that capitalizes 
 #the first and fourth letters of a name
 
@@ -10,3 +10,18 @@ print(old_macdonald('macdonald'))
 
 #test2
 print(old_macdonald('macmichael'))
+
+#_________________________________________________________________________
+#Level1_2
+#MASTER YODA: Given a sentence, return a sentence with the words reversed
+
+def master_yoda(text):
+    phrase = text.split()
+    phrase = (phrase[2],phrase[1],phrase[0])
+    return " ".join(phrase)
+
+#test1
+print(master_yoda('I am home'))
+
+#test2
+print(master_yoda('We are ready'))

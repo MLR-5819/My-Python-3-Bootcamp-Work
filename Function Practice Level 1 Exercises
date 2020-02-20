@@ -32,9 +32,7 @@ print(master_yoda('We are ready'))
 #100 or 200
 
 def almost_there(n):
-    num100 = 100 - n
-    num200 = 200 - n
-    if abs(num100) <= 10 or abs(num200) <= 10:
+    if abs(100 - n) <= 10 or abs(200 - n) <= 10:
         return True
     else:
         return False

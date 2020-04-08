@@ -30,4 +30,4 @@ print("\nScan initiated on Target:\n" + target + ", on ports: "
 for port in range(int(portr1),(int(portr2)+1)):
 	print("Scanning port "+ str(port) +"...")
 	if portscan(port):
-		print("Port "+ str(x) +": Open")
+		print("Port "+ str(port) +": Open")

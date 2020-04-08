@@ -9,17 +9,19 @@ s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 def iplookup():
 	try:
 		#ipinfo ip lookup
-		access_token = '123456789abc'
+		access_token = '837a8b2c1fbfa9' #get token at ipinfo.io
 		handler = ipinfo.getHandler(access_token)
 		ip_address = target
 		details = handler.getDetails(ip_address)
 		
-		#details wanted
+		#details pulled
 		ip_city = details.city
 		ip_country = details.country_name
 		ip_hostname = details.hostname
 
-		# print/confirm scan?
+		print("\n[*][Target: " + target)
+		print("[*][GeoInfo: "+ ip_city + ", " + ip_country)
+		print("[*][Hostname: " + ip_hostname)
 	except:
 		print("Unable to lookup that IP address.")
 
@@ -39,14 +41,20 @@ print("|           Simple Port Scanner            |")
 print("|__________________________________________|\n")
 #input validation needed
 target = input("Please enter IP address to scan (1.1.1.1):\n\t> ")
-portr1 = input("Please enter port range to scan (1-65535): \n\tStart Port> ")
-portr2 = input("\tEnd Port> ")
+portr1 = input("Please enter port range to scan (1-65535): \n\tFirst Port> ")
+portr2 = input("\t Last Port> ")
 iplookup()
-#add in confirm scan
-print("\nScan initiated on Target:\n" + target + ", on ports: "
+#confirm scan prompt needed
+print("[*]\n[*][Scan initiated on target.\n[*][Scanning " + target + ", ports: "
  + portr1 + "-" + portr2)
 
+oports = []
 for port in range(int(portr1),(int(portr2)+1)):
-	print("Scanning port "+ str(port) +"...")
+	print("[-][Scanning port "+ str(port) +"...")
 	if portscan(port):
-		print("Port "+ str(port) +": Open")
+		print("[!][Port "+ str(port) +": Open")
+		oports.append(port)
+
+print("[*]\n[*][Scan completed on target.\n[*][Target: " + target + "\n[*][Open ports: " + str(oports))
+
+#scan another target prompt?

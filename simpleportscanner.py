@@ -1,6 +1,7 @@
 #Simple Port Scanner
 import socket
 import ipinfo
+import time
 
 #global variable - s=creates a stream socket IP4/TCP
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -43,18 +44,24 @@ print("|__________________________________________|\n")
 target = input("Please enter IP address to scan (1.1.1.1):\n\t> ")
 portr1 = input("Please enter port range to scan (1-65535): \n\tFirst Port> ")
 portr2 = input("\t Last Port> ")
+tic = time.perf_counter()
+
 iplookup()
-#confirm scan prompt needed
-print("[*]\n[*][Scan initiated on target.\n[*][Scanning " + target + ", ports: "
- + portr1 + "-" + portr2)
+
+print("[ ]\n[*][Scan initiated on target.\n[*][Scanning " + 
+	target + ", ports: " + portr1 + "-" + portr2)
 
 oports = []
+
 for port in range(int(portr1),(int(portr2)+1)):
 	print("[-][Scanning port "+ str(port) +"...")
 	if portscan(port):
 		print("[!][Port "+ str(port) +": Open")
 		oports.append(port)
 
-print("[*]\n[*][Scan completed on target.\n[*][Target: " + target + "\n[*][Open ports: " + str(oports))
+toc = time.perf_counter()
+timer = round(toc - tic, 2)
 
-#scan another target prompt?
+print("[ ]\n[*][Scan completed in " + str(timer) + 
+	" seconds.\n[*][Target: " + target + "\n[*][Scanned ports: " 
+	+ portr1 + "-" + portr2 + "\n[*][Open ports: " + str(oports))
